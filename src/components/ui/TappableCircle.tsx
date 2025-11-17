@@ -1,10 +1,11 @@
 // src/components/ui/TappableCircle.tsx
-import React from 'react';
+import React from 'react'; // Needed for React.CSSProperties
 
 interface TappableCircleProps {
   color: 'blue' | 'red' | 'white';
   onClick?: () => void;
   className?: string; // For additional styling like size, animation, etc.
+  style?: React.CSSProperties; // <-- THE FIX: Allow 'style' prop
 }
 
 // Replicates .tpbl-circle and its color variants (.c-blue, .c-red, .c-white)
@@ -12,6 +13,7 @@ const TappableCircle: React.FC<TappableCircleProps> = ({
   color,
   onClick,
   className = '',
+  style, // <-- THE FIX: Destructure the 'style' prop
 }) => {
   // Base styles from .tpbl-circle
   const baseClasses =
@@ -35,6 +37,7 @@ const TappableCircle: React.FC<TappableCircleProps> = ({
     <div
       className={`${baseClasses} ${colorClasses} ${className}`}
       onClick={onClick}
+      style={style} // <-- THE FIX: Apply the 'style' prop here
     />
   );
 };

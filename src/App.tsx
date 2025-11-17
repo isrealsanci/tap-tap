@@ -2,22 +2,18 @@
 import { useGame } from './contexts/GameContext';
 import MainWrapper from './components/layout/MainWrapper';
 
-// --- Page Components (Real ones this time) ---
+// --- Page Components (Real ones) ---
 import SplashPage from './pages/SplashPage';
 import GameMenuPage from './pages/GameMenuPage';
-// import AboutPage from './pages/AboutPage';
-// import TutorialPage from './pages/TutorialPage';
-// import PlayDelayPage from './pages/PlayDelayPage';
-// import PlayAreaPage from './pages/PlayAreaPage';
+import AboutPage from './pages/AboutPage';
+import TutorialPage from './pages/TutorialPage';
+import PlayDelayPage from './pages/PlayDelayPage';
+import PlayAreaPage from './pages/PlayAreaPage/index'; // REAL
 // import PauseMenuPage from './pages/PauseMenuPage';
 // import YouLostPage from './pages/YouLostPage';
 // import LevelPassedPage from './pages/LevelPassedPage';
 
 // --- Placeholder Components (for pages we haven't built yet) ---
-const AboutPage = () => <div>About</div>;
-const TutorialPage = () => <div>Tutorial</div>;
-const PlayDelayPage = () => <div>3... 2... 1...</div>;
-const PlayAreaPage = () => <div>Playing Game...</div>;
 const PauseMenuPage = () => <div>Paused</div>;
 const YouLostPage = () => <div>You Lost</div>;
 const LevelPassedPage = () => <div>Level Passed!</div>;
@@ -31,17 +27,17 @@ function App() {
   const renderView = () => {
     switch (state.status) {
       case 'loading':
-        return <SplashPage />; // REAL
+        return <SplashPage />;
       case 'menu':
-        return <GameMenuPage />; // REAL
+        return <GameMenuPage />;
       case 'about':
-        return <AboutPage />; // Placeholder
+        return <AboutPage />;
       case 'tutorial':
-        return <TutorialPage />; // Placeholder
+        return <TutorialPage />;
       case 'delay':
-        return <PlayDelayPage />; // Placeholder
+        return <PlayDelayPage />;
       case 'playing':
-        return <PlayAreaPage />; // Placeholder
+        return <PlayAreaPage />; // REAL
       case 'paused':
         return <PauseMenuPage />; // Placeholder
       case 'lost':
