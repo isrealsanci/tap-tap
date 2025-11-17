@@ -2,8 +2,18 @@
 import { useGame } from './contexts/GameContext';
 import MainWrapper from './components/layout/MainWrapper';
 
-const SplashPage = () => <div>Loading...</div>;
-const GameMenuPage = () => <div>Game Menu</div>;
+// --- Page Components (Real ones this time) ---
+import SplashPage from './pages/SplashPage';
+import GameMenuPage from './pages/GameMenuPage';
+// import AboutPage from './pages/AboutPage';
+// import TutorialPage from './pages/TutorialPage';
+// import PlayDelayPage from './pages/PlayDelayPage';
+// import PlayAreaPage from './pages/PlayAreaPage';
+// import PauseMenuPage from './pages/PauseMenuPage';
+// import YouLostPage from './pages/YouLostPage';
+// import LevelPassedPage from './pages/LevelPassedPage';
+
+// --- Placeholder Components (for pages we haven't built yet) ---
 const AboutPage = () => <div>About</div>;
 const TutorialPage = () => <div>Tutorial</div>;
 const PlayDelayPage = () => <div>3... 2... 1...</div>;
@@ -21,36 +31,29 @@ function App() {
   const renderView = () => {
     switch (state.status) {
       case 'loading':
-        return <SplashPage />;
+        return <SplashPage />; // REAL
       case 'menu':
-        return <GameMenuPage />;
+        return <GameMenuPage />; // REAL
       case 'about':
-        return <AboutPage />;
+        return <AboutPage />; // Placeholder
       case 'tutorial':
-        return <TutorialPage />;
+        return <TutorialPage />; // Placeholder
       case 'delay':
-        return <PlayDelayPage />;
+        return <PlayDelayPage />; // Placeholder
       case 'playing':
-        return <PlayAreaPage />;
+        return <PlayAreaPage />; // Placeholder
       case 'paused':
-        return <PauseMenuPage />;
+        return <PauseMenuPage />; // Placeholder
       case 'lost':
-        return <YouLostPage />;
+        return <YouLostPage />; // Placeholder
       case 'level_passed':
-        return <LevelPassedPage />;
+        return <LevelPassedPage />; // Placeholder
       default:
         return <SplashPage />; // Fallback
     }
   };
 
-  return (
-    <MainWrapper>
-      {/* This is where the magic happens. 
-        React swaps the entire page component based on the game state.
-      */}
-      {renderView()}
-    </MainWrapper>
-  );
+  return <MainWrapper>{renderView()}</MainWrapper>;
 }
 
 export default App;
