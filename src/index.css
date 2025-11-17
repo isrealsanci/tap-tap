@@ -1,25 +1,22 @@
 @import "tailwindcss";
 
 
+
 html {
   box-sizing: border-box;
-  font-size: 62.5%; /* Mereset font-size dasar ke 10px */
+  font-size: 62.5%; 
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
-
-  /* Menonaktifkan pemilihan/highlight teks */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  /* Menghapus highlight abu-abu saat tap di mobile */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: none;
 }
@@ -29,46 +26,62 @@ body {
   font-size: 2.2rem; /* base font size 22px */
   background-color: #0B1D31; /* brand-dark */
   color: white;
-  overflow: hidden; /* selalu sembunyikan scrollbar */
+  overflow: hidden; 
   text-transform: uppercase;
   text-align: center;
-  
-  /* Background pattern dari style.css */
   background-image: url('/images/backgroundPattern.svg');
   background-repeat: repeat;
 }
 
-/* Ini adalah cara terbaik untuk menangani pseudo-element (::before, ::after)
-  yang Anda gunakan untuk gradien latar belakang.
-*/
-@layer components {
-  /* .page-faded-bg::before */
-  .page-faded-bg {
-    @apply relative z-0;
-  }
-  .page-faded-bg::before {
-    content: "";
-    @apply absolute top-0 left-0 w-full h-full bg-brand-dark-faded -z-20;
-  }
 
-  /* .anmtd-grdnt-bg::after */
-  .anmtd-grdnt-bg::after {
-    content: "";
-    @apply absolute top-0 left-0 w-full h-full -z-10 animate-anmtdOpcty;
+@keyframes anmtdOpcty {
+  0% {
+    opacity: 1;
   }
+  100% {
+    opacity: 0.5;
+  }
+}
 
-  /* .blu-grdnt-bg::after */
-  .blu-grdnt-bg::after {
-    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(88,209,255,0.35) 100%);
-  }
-  
-  /* .rd-grdnt-bg::after */
-  .rd-grdnt-bg::after {
-    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(255,19,68,0.35) 100%);
-  }
-  
-  /* .grn-grdnt-bg::after */
-  .grn-grdnt-bg::after {
-    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(0,255,107,0.35) 100%);
-  }
+
+.page-faded-bg {
+  position: relative;
+  z-index: 0;
+}
+.page-faded-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -20; 
+  background-color: rgba(11, 29, 49, 0.9);
+}
+
+/* .anmtd-grdnt-bg::after */
+.anmtd-grdnt-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10; 
+  animation: anmtdOpcty 2s alternate infinite ease-in-out;
+}
+
+/* .blu-grdnt-bg::after */
+.blu-grdnt-bg::after {
+  background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(88,209,255,0.35) 100%);
+}
+
+/* .rd-grdnt-bg::after */
+.rd-grdnt-bg::after {
+  background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(255,19,68,0.35) 100%);
+}
+
+/* .grn-grdnt-bg::after */
+.grn-grdnt-bg::after {
+  background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(0,255,107,0.35) 100%);
 }
