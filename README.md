@@ -1,6 +1,13 @@
-# React + TypeScript + Vite
+# TAP-TAP GAME
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- USE REOWN
+- TAILWIND
+- SOLANA
+- REACT
+- VITE
+- TYPESCRIPT
+
+-  PLAY TO EARN GAME
 
 Currently, two official plugins are available:
 
