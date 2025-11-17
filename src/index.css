@@ -1,68 +1,74 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Mereset font-size dasar ke 10px */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+
+  /* Menonaktifkan pemilihan/highlight teks */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Menghapus highlight abu-abu saat tap di mobile */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2.2rem; /* base font size 22px */
+  background-color: #0B1D31; /* brand-dark */
+  color: white;
+  overflow: hidden; /* selalu sembunyikan scrollbar */
+  text-transform: uppercase;
+  text-align: center;
+  
+  /* Background pattern dari style.css */
+  background-image: url('/images/backgroundPattern.svg');
+  background-repeat: repeat;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Ini adalah cara terbaik untuk menangani pseudo-element (::before, ::after)
+  yang Anda gunakan untuk gradien latar belakang.
+*/
+@layer components {
+  /* .page-faded-bg::before */
+  .page-faded-bg {
+    @apply relative z-0;
   }
-  a:hover {
-    color: #747bff;
+  .page-faded-bg::before {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-full bg-brand-dark-faded -z-20;
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* .anmtd-grdnt-bg::after */
+  .anmtd-grdnt-bg::after {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-full -z-10 animate-anmtdOpcty;
+  }
+
+  /* .blu-grdnt-bg::after */
+  .blu-grdnt-bg::after {
+    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(88,209,255,0.35) 100%);
+  }
+  
+  /* .rd-grdnt-bg::after */
+  .rd-grdnt-bg::after {
+    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(255,19,68,0.35) 100%);
+  }
+  
+  /* .grn-grdnt-bg::after */
+  .grn-grdnt-bg::after {
+    background-image: linear-gradient(0deg, rgba(11,29,48,0.00) 0%, rgba(0,255,107,0.35) 100%);
   }
 }
